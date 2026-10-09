@@ -1,0 +1,33 @@
+00a00093 // addi x1, x0, 10        # x1 = 10
+00300113 // addi x2, x0, 3         # x2 = 3
+002081b3 // add  x3, x1, x2        # 13
+40208233 // sub  x4, x1, x2        # 7
+0020f2b3 // and  x5, x1, x2        # 2
+0020e333 // or   x6, x1, x2        # 11
+0020c3b3 // xor  x7, x1, x2        # 9
+00209433 // sll  x8, x1, x2        # 80
+0020d4b3 // srl  x9, x1, x2        # 1
+ff000513 // addi x10, x0, -16      # -16
+402555b3 // sra  x11, x10, x2      # -2
+00152633 // slt  x12, x10, x1      # 1  (signed)
+001536b3 // sltu x13, x10, x1      # 0  (unsigned)
+12345737 // lui  x14, 0x12345      # 0x12345000
+00000797 // auipc x15, 0           # = pc of this instr = 0x38
+00302023 // sw   x3, 0(x0)         # mem[0] = 13
+00002803 // lw   x16, 0(x0)        # 13
+00a002a3 // sb   x10, 5(x0)        # mem[5] = 0xF0
+00504883 // lbu  x17, 5(x0)        # 0xF0 = 240
+00500903 // lb   x18, 5(x0)        # sign-ext = -16
+00000993 // addi x19, x0, 0
+00500a13 // addi x20, x0, 5
+00198993 // loop:   addi x19, x19, 1
+ff499ee3 // bne  x19, x20, loop    # x19 = 5
+00800aef // jal  x21, fn           # x21 = return addr
+06300b13 // addi x22, x0, 99       # skipped
+00700b93 // fn:     addi x23, x0, 7        # x23 = 7
+00000c17 // auipc x24, 0
+010c0c13 // addi x24, x24, 16
+000c0ce7 // jalr x25, 0(x24)       # jump to done, x25 = pc+4
+06300d13 // addi x26, x0, 99       # skipped
+00100d93 // done:   addi x27, x0, 1        # x27 = 1
+0000006f // end:    jal  x0, end           # halt
